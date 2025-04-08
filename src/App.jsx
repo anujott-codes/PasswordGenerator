@@ -1,4 +1,5 @@
 import { use, useState, useCallback, useEffect, useRef } from 'react'
+import Waves from './blocks/Backgrounds/Waves/Waves';
 
 
 function App() {
@@ -35,6 +36,21 @@ function App() {
   useEffect(() => {passwordGenerator()},[length, numAllowed, charAllowed, passwordGenerator])
   return (
     <>
+    <div className="absolute top-0 left-0 w-full h-full -z-10">
+      <Waves
+  lineColor="#fff"
+  backgroundColor="rgba(135, 206, 250, 0.5)"
+  waveSpeedX={0.02}
+  waveSpeedY={0.01}
+  waveAmpX={40}
+  waveAmpY={20}
+  friction={0.9}
+  tension={0.01}
+  maxCursorMove={120}
+  xGap={12}
+  yGap={36}
+/></div>
+<div className="relative z-10">
       <h1 className='text-black text-5xl font-bold text-center my-8'>Password Generator</h1>
       <div className="w-4xl h-98 mx-auto shadow-xl border border-gray-400 rounded-lg px-4 py-3 my-8 bg-white flex flex-wrap text-black flex-col justify-evenly">
         <div>
@@ -63,7 +79,7 @@ function App() {
             max={20}
             value={length}
             className='cursor-pointer w-full m-1 accent-black hover:accent-gray-500'
-            onChange={(e) => {setLength(e.target.value)}}/>
+            onChange={(e) => {setLength(Number(e.target.value))}}/>
           </div>
           <div className='flex items-center gap-x-1 m-1'>
             <input type="checkbox"
@@ -75,7 +91,7 @@ function App() {
           </div>
           <div className='flex items-center gap-x-1 m-1'>
             <input type="checkbox"
-            defaultChecked = {numAllowed}
+            defaultChecked = {charAllowed}
             id='characterInput'
             className='m-1 accent-black w-4 h-4'
             onChange={() => {setCharAllowed((prev) => !prev)}} />
@@ -89,6 +105,7 @@ function App() {
             Generate Password
           </button>
         </div>
+      </div>
       </div>
     </>
   )
