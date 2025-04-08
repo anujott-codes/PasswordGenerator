@@ -76,6 +76,13 @@ function App() {
             <label>Characters</label>
           </div>
         </div>
+        <div className='text-center'>
+          <button
+          className='outline-none bg-blue-700 text-white px-3 py-0.5 shrink-0 cursor-pointer hover:bg-green-400'
+          onClick={passwordGenerator}>
+            Generate Password
+          </button>
+        </div>
       </div>
     </>
   )
